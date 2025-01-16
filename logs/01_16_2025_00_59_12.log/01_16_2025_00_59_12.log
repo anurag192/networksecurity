@@ -1,0 +1,5 @@
+[ 2025-01-16 00:59:15,038-INFO-Initiate data ingestion ]
+[ 2025-01-16 00:59:15,265-INFO-{"message": "Waiting for suitable server to become available", "selector": "Primary()", "operation": "find", "topologyDescription": "<TopologyDescription id: 67880c8b427f41a55b74c86c, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('cluster0-shard-00-00.rpg3w.mongodb.net', 27017) server_type: Unknown, rtt: None>, <ServerDescription ('cluster0-shard-00-01.rpg3w.mongodb.net', 27017) server_type: Unknown, rtt: None>, <ServerDescription ('cluster0-shard-00-02.rpg3w.mongodb.net', 27017) server_type: Unknown, rtt: None>]>", "clientId": {"$oid": "67880c8b427f41a55b74c86c"}, "remainingTimeMS": 30} ]
+[ 2025-01-16 00:59:21,176-INFO-Performed train-test split ]
+[ 2025-01-16 00:59:21,403-INFO-Exported train test split ]
+[ 2025-01-16 00:59:21,417-INFO-Initiate the data validation ]
