@@ -52,6 +52,7 @@ class DataValidation:
                 print(f"Train dataframe do not contain all columns")
 
             status=self.validate_columns(dataframe=test_dataframe)
+            print(status)
             if not status:
                 print(f"Test dataframe do not contain all the columns")
 
