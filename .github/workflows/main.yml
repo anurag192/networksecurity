@@ -53,6 +53,7 @@ jobs:
                 ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY_NAME }}
                 IMAGE_TAG: latest
 
+                
               run: |
                 # Build the Docker image 
                 cd $GITHUB_WORKSPACE
