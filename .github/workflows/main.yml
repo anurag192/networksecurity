@@ -54,6 +54,7 @@ jobs:
                 IMAGE_TAG: latest
               run: |
                 # Build the Docker image
+                cd $GITHUB_WORKSPACE
                 docker build -t $ECR_REPOSITORY:$IMAGE_TAG .
                 
                 # Tag the Docker image with the ECR registry and repository
@@ -65,4 +66,3 @@ jobs:
                 echo "Image $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG pushed successfully."
 
 
-                
