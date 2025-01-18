@@ -53,7 +53,7 @@ jobs:
                 ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY_NAME }}
                 IMAGE_TAG: latest
 
-                
+
               run: |
                 # Build the Docker image 
                 cd $GITHUB_WORKSPACE
@@ -66,5 +66,6 @@ jobs:
                 docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
                 
                 echo "Image $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG pushed successfully."
+                
 
 
