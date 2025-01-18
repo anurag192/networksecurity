@@ -1,8 +1,0 @@
-[ 2025-01-15 19:39:25,109-INFO-Initiate data ingestion ]
-[ 2025-01-15 19:39:25,320-INFO-{"message": "Waiting for suitable server to become available", "selector": "Primary()", "operation": "find", "topologyDescription": "<TopologyDescription id: 6787c19575c795a8910146d4, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('cluster0-shard-00-00.rpg3w.mongodb.net', 27017) server_type: Unknown, rtt: None>, <ServerDescription ('cluster0-shard-00-01.rpg3w.mongodb.net', 27017) server_type: Unknown, rtt: None>, <ServerDescription ('cluster0-shard-00-02.rpg3w.mongodb.net', 27017) server_type: Unknown, rtt: None>]>", "clientId": {"$oid": "6787c19575c795a8910146d4"}, "remainingTimeMS": 30} ]
-[ 2025-01-15 19:39:29,905-INFO-Data fetched from MongoDB collection: NetworkData ]
-[ 2025-01-15 19:39:30,130-INFO-Exported data to feature store at Artifacts\2025-01-15_19_39_25\data_ingestion\feature_store\phisingData.csv ]
-[ 2025-01-15 19:39:30,140-INFO-Performed train-test split ]
-[ 2025-01-15 19:39:30,357-INFO-Exported training data to Artifacts\2025-01-15_19_39_25\data_ingestion\ingested\train.csv ]
-[ 2025-01-15 19:39:30,358-INFO-Exported testing data to Artifacts\2025-01-15_19_39_25\data_ingestion\ingested\test.csv ]
-[ 2025-01-15 19:39:30,360-INFO-Data ingestion completed successfully ]

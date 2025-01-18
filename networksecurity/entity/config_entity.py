@@ -9,12 +9,14 @@ print(training_pipeline.ARTIFACT_DIR)
 
 class TrainingPipelineConfig:
     def __init__(self,timestamp=datetime.now()):
-        timestamp=timestamp.strftime("%Y-%m-%d %H-%M-%S")
+        timestamp=timestamp.strftime("%Y-%m-%d_%H-%M-%S")
         self.pipeline_name=training_pipeline.PIPELINE_NAME
         self.artifact_name=training_pipeline.ARTIFACT_DIR
         self.artifact_dir=os.path.join(self.artifact_name,timestamp)
         print(self.artifact_dir)
         self.timestamp:str=timestamp
+        self.model_dir:str=os.path.join("final_models")
+
 
 class DataIngestionConfig:
 

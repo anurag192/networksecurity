@@ -28,9 +28,12 @@ class DataIngestion:
             self.mongo_client=pymongo.MongoClient(MONGO_DB_URL)
             collection=self.mongo_client[database_name][collection_name]
             df=pd.DataFrame(list(collection.find()))
+            print(df.columns)
 
             if "_id" in df.columns.to_list():
                 df=df.drop(columns=["_id"],axis=1)
+            if "Unnamed: 0" in df.columns.to_list():
+                df = df.drop(columns=["Unnamed: 0"], axis=1)
 
             df.replace({"na": np.nan}, inplace=True)
 
@@ -54,7 +57,13 @@ class DataIngestion:
     def train_test_split(self,dataframe:pd.DataFrame):
         try:
             train_set,test_set=train_test_split(dataframe,test_size=self.data_ingestion_config.train_test_split_ratio)
+            print(train_set.columns)
             logging.info("Performed train-test split")
+            if "Unnamed: 0" in train_set.columns:
+                train_set = train_set.drop(columns=["Unnamed: 0"])
+            if "Unnamed: 0" in test_set.columns:
+                test_set = test_set.drop(columns=["Unnamed: 0"])
+
             train_path=os.path.dirname(self.data_ingestion_config.training_file_path)
             os.makedirs(train_path,exist_ok=True)
             train_set.to_csv(self.data_ingestion_config.training_file_path,index=False,header=True)

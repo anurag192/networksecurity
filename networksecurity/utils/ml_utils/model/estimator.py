@@ -12,6 +12,7 @@ class NetworkModel:
 
     def predict(self,x):
         try:
+            x = x.drop(columns=['Unnamed: 0'], errors='ignore')
             x_transform=self.preprocessor.transform(x)
             y_hat=self.model.predict(x_transform)
 

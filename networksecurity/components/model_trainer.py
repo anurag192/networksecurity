@@ -4,7 +4,7 @@ from networksecurity.entity.artifacts_entity import ClassificationMetricArtifact
 from networksecurity.entity.config_entity import ModelTrainerConfig
 import sys
 import os
-
+from networksecurity.cloud.s3_syncer import S3Sync
 from networksecurity.utils.main_utils.utils import save_object,load_object
 from networksecurity.utils.main_utils.utils import load_numpy_array
 
@@ -19,6 +19,9 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.ensemble import GradientBoostingClassifier
 from networksecurity.utils.main_utils.utils import evaluate_models
 import mlflow
+import dagshub
+dagshub.init(repo_owner='102101007', repo_name='networksecurity', mlflow=True)
+
 
 
 class ModelTrainer:
@@ -94,12 +97,15 @@ class ModelTrainer:
         classification_test_metric=get_classification_score(y_true=y_test,y_pred=y_test_pred)
 
         self.track_mlflow(best_model,classification_test_metric)
-        
+
         preprocessor=load_object(self.data_transformation_artifact.transformed_object_file_path)
         model_dir_path=os.path.dirname(self.model_trainer_config.trained_model_file_path)
         os.makedirs(model_dir_path,exist_ok=True)
         networkmodel=NetworkModel(preprocessor=preprocessor,model=best_model)
         save_object(self.model_trainer_config.trained_model_file_path,obj=networkmodel)
+        save_object("final_models/model.pkl",best_model)
+
+
 
         model_trainer_artifact=ModelTrainerArtifact(trained_model_file_path=self.model_trainer_config.trained_model_file_path,
                              train_metric_artifact=classification_train_metric,

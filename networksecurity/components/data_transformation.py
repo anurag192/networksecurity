@@ -54,6 +54,7 @@ class DataTransformation:
         try:
             logging.info("Starting data transformation")
             train_df=DataTransformation.read_data(self.data_validation_artifact.valid_train_file_path)
+            logging.info(f"{train_df}")
             test_df=DataTransformation.read_data(self.data_validation_artifact.valid_test_file_path)
 
             input_feature_train_df=train_df.drop(columns=[TARGET_COLUMN],axis=1)
@@ -75,6 +76,7 @@ class DataTransformation:
             save_numpy_array_data(self.data_transformation_config.transformed_train_file_path,train_array)
             save_numpy_array_data(self.data_transformation_config.transformed_test_file_path,test_array)
             save_object(self.data_transformation_config.transformed_object_file_path,preprocessor_object)
+            save_object("final_models/preprocessor.pkl",preprocessor_object)
 
             data_transformed_artifact=DataTransformedArtifact(
                 transformed_object_file_path=self.data_transformation_config.transformed_object_file_path,

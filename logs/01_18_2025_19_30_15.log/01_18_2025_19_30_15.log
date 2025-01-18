@@ -1,0 +1,66 @@
+[ 2025-01-18 19:30:19,901-INFO-HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK" ]
+[ 2025-01-18 19:30:19,901-INFO-Accessing as 102101007 ]
+[ 2025-01-18 19:30:20,307-INFO-HTTP Request: GET https://dagshub.com/api/v1/repos/102101007/networksecurity "HTTP/1.1 200 OK" ]
+[ 2025-01-18 19:30:20,680-INFO-HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK" ]
+[ 2025-01-18 19:30:20,680-INFO-Initialized MLflow to track repo "102101007/networksecurity" ]
+[ 2025-01-18 19:30:20,680-INFO-Repository 102101007/networksecurity initialized! ]
+[ 2025-01-18 19:30:31,195-INFO-{"message": "Waiting for suitable server to become available", "selector": "Primary()", "operation": "find", "topologyDescription": "<TopologyDescription id: 678bb3ff746bf7ea54f95a81, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('cluster0-shard-00-00.rpg3w.mongodb.net', 27017) server_type: Unknown, rtt: None>, <ServerDescription ('cluster0-shard-00-01.rpg3w.mongodb.net', 27017) server_type: Unknown, rtt: None>, <ServerDescription ('cluster0-shard-00-02.rpg3w.mongodb.net', 27017) server_type: Unknown, rtt: None>]>", "clientId": {"$oid": "678bb3ff746bf7ea54f95a81"}, "remainingTimeMS": 30} ]
+[ 2025-01-18 19:30:34,795-INFO-Performed train-test split ]
+[ 2025-01-18 19:30:35,008-INFO-Exported train test split ]
+[ 2025-01-18 19:30:35,008-INFO-Data ingestion:DataIngestionArtifact(train_data_path='Artifacts\\2025-01-18_19-30-15\\data_ingestion\\ingested\\train.csv', test_data_path='Artifacts\\2025-01-18_19-30-15\\data_ingestion\\ingested\\test.csv') ]
+[ 2025-01-18 19:30:35,055-INFO-Number_of_columns is: 2 ]
+[ 2025-01-18 19:30:35,055-INFO-Number of columns is:31 ]
+[ 2025-01-18 19:30:35,055-INFO-Number_of_columns is: 2 ]
+[ 2025-01-18 19:30:35,055-INFO-Number of columns is:31 ]
+[ 2025-01-18 19:30:35,414-INFO-Initiate data transformation ]
+[ 2025-01-18 19:30:35,414-INFO-Starting data transformation ]
+[ 2025-01-18 19:30:35,476-INFO-       having_IP_Address  URL_Length  Shortining_Service  ...  Links_pointing_to_page  Statistical_report  Result
+0                     -1          -1                  -1  ...                       1                   1      -1
+1                     -1          -1                  -1  ...                       1                   1      -1
+2                      1          -1                   1  ...                       0                   1       1
+3                      1          -1                   1  ...                       0                  -1       1
+4                      1           1                   1  ...                       0                  -1       1
+...                  ...         ...                 ...  ...                     ...                 ...     ...
+17683                 -1          -1                   1  ...                       1                   1       1
+17684                 -1          -1                   1  ...                       0                   1       1
+17685                 -1          -1                   1  ...                       0                   1       1
+17686                  1          -1                   1  ...                       1                  -1      -1
+17687                  1          -1                   1  ...                      -1                   1      -1
+
+[17688 rows x 31 columns] ]
+[ 2025-01-18 19:30:35,501-INFO-Enter get data transformation method of transformation class ]
+[ 2025-01-18 19:31:02,194-INFO-Model trainer artifact:ModelTrainerArtifact(trained_model_file_path='Artifacts\\2025-01-18_19-30-15\\model_trainer\\trained_model\\model.pkl', train_metric_artifact=ClassificationMetricArtifact(f1_score=0.9368341327947488, precision_score=0.9282569541725035, recall_score=0.9455712975231882), test_metric_artifact=ClassificationMetricArtifact(f1_score=0.9361281392129721, precision_score=0.9267815191855913, recall_score=0.9456652017578905)) ]
+[ 2025-01-18 19:31:02,194-INFO-Directory syncing ]
+[ 2025-01-18 19:31:24,921-INFO-Artifact directory synced successfully ]
+[ 2025-01-18 19:31:24,921-INFO-Syncing model directory ]
+[ 2025-01-18 19:31:46,897-INFO-Model directory synced ]
+[ 2025-01-18 19:32:16,815-INFO-{"message": "Waiting for suitable server to become available", "selector": "Primary()", "operation": "find", "topologyDescription": "<TopologyDescription id: 678bb468746bf7ea54f95a82, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('cluster0-shard-00-00.rpg3w.mongodb.net', 27017) server_type: Unknown, rtt: None>, <ServerDescription ('cluster0-shard-00-01.rpg3w.mongodb.net', 27017) server_type: Unknown, rtt: None>, <ServerDescription ('cluster0-shard-00-02.rpg3w.mongodb.net', 27017) server_type: Unknown, rtt: None>]>", "clientId": {"$oid": "678bb468746bf7ea54f95a82"}, "remainingTimeMS": 30} ]
+[ 2025-01-18 19:32:21,812-INFO-Performed train-test split ]
+[ 2025-01-18 19:32:22,133-INFO-Exported train test split ]
+[ 2025-01-18 19:32:22,133-INFO-Data ingestion:DataIngestionArtifact(train_data_path='Artifacts\\2025-01-18_19-30-15\\data_ingestion\\ingested\\train.csv', test_data_path='Artifacts\\2025-01-18_19-30-15\\data_ingestion\\ingested\\test.csv') ]
+[ 2025-01-18 19:32:22,233-INFO-Number_of_columns is: 2 ]
+[ 2025-01-18 19:32:22,233-INFO-Number of columns is:31 ]
+[ 2025-01-18 19:32:22,233-INFO-Number_of_columns is: 2 ]
+[ 2025-01-18 19:32:22,233-INFO-Number of columns is:31 ]
+[ 2025-01-18 19:32:22,986-INFO-Initiate data transformation ]
+[ 2025-01-18 19:32:22,986-INFO-Starting data transformation ]
+[ 2025-01-18 19:32:23,156-INFO-       having_IP_Address  URL_Length  Shortining_Service  ...  Links_pointing_to_page  Statistical_report  Result
+0                      1          -1                   1  ...                       0                   1      -1
+1                     -1          -1                  -1  ...                       0                  -1      -1
+2                      1           0                   1  ...                       1                   1      -1
+3                     -1          -1                   1  ...                       1                   1       1
+4                      1          -1                   1  ...                       0                   1       1
+...                  ...         ...                 ...  ...                     ...                 ...     ...
+17683                 -1          -1                   1  ...                       1                  -1      -1
+17684                  1          -1                   1  ...                       1                   1       1
+17685                 -1          -1                  -1  ...                       1                   1      -1
+17686                  1          -1                   1  ...                       0                   1       1
+17687                  1          -1                   1  ...                       0                   1       1
+
+[17688 rows x 31 columns] ]
+[ 2025-01-18 19:32:23,185-INFO-Enter get data transformation method of transformation class ]
+[ 2025-01-18 19:32:59,566-INFO-Model trainer artifact:ModelTrainerArtifact(trained_model_file_path='Artifacts\\2025-01-18_19-30-15\\model_trainer\\trained_model\\model.pkl', train_metric_artifact=ClassificationMetricArtifact(f1_score=0.9360201511335012, precision_score=0.9268682031327946, recall_score=0.9453546351887656), test_metric_artifact=ClassificationMetricArtifact(f1_score=0.9366281387006775, precision_score=0.9284867641248519, recall_score=0.9449135504624046)) ]
+[ 2025-01-18 19:32:59,566-INFO-Directory syncing ]
+[ 2025-01-18 19:33:28,902-INFO-Artifact directory synced successfully ]
+[ 2025-01-18 19:33:28,902-INFO-Syncing model directory ]
+[ 2025-01-18 19:33:53,049-INFO-Model directory synced ]
