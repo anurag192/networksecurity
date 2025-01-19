@@ -40,7 +40,7 @@ jobs:
               with:
                   aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
                   aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-                  aws-region: us-east-1
+                  aws-region: eu-north-1
                  
             - name: Login to Amazon ECR  
               id: login-ecr
@@ -50,7 +50,7 @@ jobs:
               id: build-image
               env:
                 ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-                ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY_NAME }}
+                ECR_REPOSITORY: networksecurity
                 IMAGE_TAG: latest
               run: |
                 # Build the Docker image 
@@ -78,7 +78,7 @@ jobs:
               with:
                 aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
                 aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-                aws-region: us-east-1
+                aws-region: eu-north-1
 
             - name: Login to Amazon ECR
               id: login-ecr
@@ -86,8 +86,27 @@ jobs:
 
             - name: Pull latest image
               env:
-                ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY_NAME }}
-                AWS_ECR_LOGIN_URI: ${{ secrets.AWS_ECR_LOGIN_URI }}
+                ECR_REPOSITORY: networksecurity
+                ECR_REGISTRY: 058264176808.dkr.ecr.eu-north-1.amazonaws.com
               run: |
-                docker pull $AWS_ECR_LOGIN_URI/$ECR_REPOSITORY:latest
-                echo "Pulled latest image: $AWS_ECR_LOGIN_URI/$ECR_REPOSITORY:latest"
+                docker pull $ECR_REGISTRY/$ECR_REPOSITORY:latest
+                echo "Pulled latest image: $ECR_REGISTRY/$ECR_REPOSITORY:latest"
+
+            - name: Run Docker container
+              env:
+                ECR_REPOSITORY: networksecurity
+                ECR_REGISTRY: 058264176808.dkr.ecr.eu-north-1.amazonaws.com
+              run: |
+                # Stop and remove the previous container if it exists
+                docker ps -q --filter "name=networksecurity-container" | xargs -r docker stop
+                docker ps -aq --filter "name=networksecurity-container" | xargs -r docker rm
+                
+                # Run the new container
+                docker run -d --name networksecurity-container -p 80:80 $ECR_REGISTRY/$ECR_REPOSITORY:latest
+                echo "Running container: networksecurity-container"
+
+            - name: Cleanup Old Images
+              run: |
+                # Remove unused Docker images
+                docker image prune -f
+                echo "Cleaned up unused Docker images."
