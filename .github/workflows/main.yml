@@ -85,28 +85,17 @@ jobs:
               uses: aws-actions/amazon-ecr-login@v1
 
             - name: Pull latest image
-              env:
-                ECR_REPOSITORY: networksecurity
-                ECR_REGISTRY: 058264176808.dkr.ecr.eu-north-1.amazonaws.com
+              run:  |
+                docker pull ${{secrets.AWS_ECR_LOGIN_URI}}/${{secrets.ECR_REPOSITORY_NAME}}
+            
+            - name: Run docker image to serve user
               run: |
-                docker pull $ECR_REGISTRY/$ECR_REPOSITORY:latest
-                echo "Pulled latest image: $ECR_REGISTRY/$ECR_REPOSITORY:latest"
-
-            - name: Run Docker container
-              env:
-                ECR_REPOSITORY: networksecurity
-                ECR_REGISTRY: 058264176808.dkr.ecr.eu-north-1.amazonaws.com
-              run: |
-                # Stop and remove the previous container if it exists
-                docker ps -q --filter "name=networksecurity-container" | xargs -r docker stop
-                docker ps -aq --filter "name=networksecurity-container" | xargs -r docker rm
+                docker run -d -p 8080:8080 --ipc="host" --name=mltest -e 'AWS_ACCESS_KEY_ID=${{secrets.AWS_ACCESS_KEY_ID}}' e 'AWS_SECRET_ACCESS_KEY=${{AWS_SECRET_ACCESS_KEY}}' -e 'AWS_REGION'=eu-north-1 ${{secrets.AWS_ECR_LOGIN_URI}}/${{secrets.ECR_REPOSITORY_NAME}} 
                 
-                # Run the new container
-                docker run -d --name networksecurity-container -p 80:80 $ECR_REGISTRY/$ECR_REPOSITORY:latest
-                echo "Running container: networksecurity-container"
 
-            - name: Cleanup Old Images
+            - name: Clean previous image and container
               run: |
-                # Remove unused Docker images
-                docker image prune -f
-                echo "Cleaned up unused Docker images."
+               docker system prune -f
+
+                 
+             
