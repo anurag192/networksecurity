@@ -21,7 +21,7 @@ jobs:
       - name: Run unit tests
         run: echo "Running unit tests"
 
-        
+
   build-and-push-ecr-image:
     name: Continuous Delivery
     needs: integration
@@ -64,6 +64,7 @@ jobs:
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           
           echo "Image $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG pushed successfully."
+          
 
   continuous-deployment:
     name: Continuous Deployment
