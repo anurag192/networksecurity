@@ -111,7 +111,7 @@ The entire workflow can be automated using:
 
 - Trained models with high accuracy in threat classification.
 - Live prediction via web UI.
-- Structured MongoDB backend storing input and prediction logs.
+
 
 ---
 
